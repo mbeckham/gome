@@ -8,6 +8,7 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 import Card from '../components/Card';
 import Row from '../components/Row';
+import DeckList from '../components/DeckList'
 
 const Home: React.FC = () => {
 
@@ -58,6 +59,7 @@ const Home: React.FC = () => {
           </IonCol>
         </IonRow>
       </IonGrid>
+      <DeckList cardValues={deck}></DeckList>
       </IonContent>
     </IonPage>
   );
