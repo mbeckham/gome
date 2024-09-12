@@ -6,9 +6,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({value}) => {
   return (
-    <IonCard color="primary">
-
-
+    <IonCard color="primary" className="ion-text-center">
         <IonCardContent>{value}</IonCardContent>
       </IonCard>
   );

@@ -45,12 +45,19 @@ const Home: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
         </IonHeader> 
+      <h1 className="roundCounter">Round: {deckPosition}</h1>
       <IonGrid>
         <Row cardSets={cardSets} rowPosition='top' deckPos={deckPosition}/>
         <Row cardSets={cardSets} rowPosition='bottom' deckPos={deckPosition-1}/>
+        <IonRow>
+          <IonCol>
+          <IonButton expand='block' onClick={previousRound}>Previous Round</IonButton>
+          </IonCol>
+          <IonCol>
+          <IonButton expand='block' onClick={nextRound}>Next Round</IonButton>
+          </IonCol>
+        </IonRow>
       </IonGrid>
-      <IonButton onClick={previousRound}>previousRound Round</IonButton>
-      <IonButton onClick={nextRound}>Next Round</IonButton>
       </IonContent>
     </IonPage>
   );
