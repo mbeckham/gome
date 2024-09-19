@@ -1,22 +1,41 @@
 import {IonImg, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import './Card.css';
+import { CardValue } from '../data/CardData';
 
 interface CardProps {
-    value:string|number
+    currentCard: CardValue
+    rowPosition: string
  }
 
- function isNumber(value:string|number) {
+function isNumber(value:string|number) {
   return typeof value === 'number';
 }
 
-const Card: React.FC<CardProps> = ({value}) => {
+function buildBottom() {
+
+}
+
+function buildTop(card: CardValue) {
+
+}
+
+const Card: React.FC<CardProps> = ({ currentCard, rowPosition}) => {
 
   var element;
-  if(isNumber(value)) {
-    element = <div id="card">{value}</div>;
+  if(rowPosition == "top") {
+    element = (<>
+    <div id="card">{currentCard.cardValue}</div>
+      <IonImg src={currentCard.cardImage} id="topRow"></IonImg>
+    </>
+    );
   } else {
-    element = <IonImg src={value}></IonImg>
+    element = <IonImg src={currentCard.cardImage} id="bottomRow"></IonImg>
   }
+  // if(isNumber(value)) {
+  //   element = <div id="card">{value}</div>;
+  // } else {
+  //   element = <IonImg src={value}></IonImg>
+  // }
 
   return (
     <IonCard color="primary" className="ion-text-center">
@@ -26,3 +45,17 @@ const Card: React.FC<CardProps> = ({value}) => {
 };
 
 export default Card;
+
+
+/**
+ * 
+ export const getCardValue = (card: CardValue, rowPosition: string) => {
+    if(rowPosition == "bottom") {
+        return card.cardImage;
+        //+ " (" + card.cardValue + ")";
+    } else {
+        return card.cardValue;
+        //+ " (" + card.cardType + ")";
+    }
+}
+ */

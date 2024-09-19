@@ -10,13 +10,13 @@ const Row: React.FC<RowProps> = ({cardSets, rowPosition, deckPos}: RowProps) => 
   return (
     <IonRow>
           <IonCol>
-          <Card value={getCardValue(cardSets[0][deckPos], rowPosition)}/>
+            <Card currentCard={cardSets[0][deckPos]} rowPosition={rowPosition} />
           </IonCol>
           <IonCol>
-          <Card value={getCardValue(cardSets[1][deckPos], rowPosition)}/>
+            <Card currentCard={cardSets[1][deckPos]} rowPosition={rowPosition} />
           </IonCol>
           <IonCol>
-          <Card value={getCardValue(cardSets[2][deckPos], rowPosition)}/>
+            <Card currentCard={cardSets[2][deckPos]} rowPosition={rowPosition} />
           </IonCol>
         </IonRow>
   );
