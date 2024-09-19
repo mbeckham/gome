@@ -1,6 +1,7 @@
 import React from 'react';
 import {CardData, CardValue, GenerateDeck, ShuffleDeck} from '../data/CardData';
 import { IonContent, IonItem, IonLabel, IonList } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup } from '@ionic/react';
 
 
 interface listProps {
@@ -15,10 +16,19 @@ const DeckList: React.FC<listProps> = ({cardValues}) => {
             <IonLabel>{card.cardType}</IonLabel>
         </IonItem>
     );
-    return (
-      <IonList>
+    return (<>
+        <IonAccordionGroup>
+      <IonAccordion>
+        <IonItem slot="header">
+          <IonLabel>Decklist</IonLabel>
+        </IonItem>
+        <IonList inset={true} slot="content">
         {listItems}
       </IonList>
+      </IonAccordion>
+    </IonAccordionGroup>
+      
+      </>
     );
   };
   

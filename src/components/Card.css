@@ -1,0 +1,10 @@
+ion-card {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+
+  #card {
+    font-size: 3rem !important;
+    margin-top:25%;
+  }

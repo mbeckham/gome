@@ -1,36 +1,49 @@
 export interface CardData {
     cardType: string,
-    cardValues: number[]
+    cardValues: number[],
+    cardImage: string
 }
 
 export interface CardValue {
     cardType: string,
-    cardValue: number
+    cardValue: number,
+    cardImage: string
 }
 
 const CardValues: CardData[] =[{
     cardType : "pool",
-    cardValues : [3, 4, 6, 7, 8, 9, 10, 12, 13]
+    cardValues : [3, 4, 6, 7, 8, 9, 10, 12, 13],
+    cardImage: "Welcome-To...React/assets/pool.png"
 },
 {
     cardType: "construction",
-    cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13]
+    cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13],
+    cardImage: "Welcome-To...React/assets/construction.png"
+
 },
 {
     cardType: "BIS",
-    cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13]
+    cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13],
+    cardImage: "Welcome-To...React/assets/bis.png"
+
 },
 {
     cardType: "fence",
-    cardValues: [1, 2, 3, 5, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 11, 13, 14, 15]
+    cardValues: [1, 2, 3, 5, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 11, 13, 14, 15],
+    cardImage: "Welcome-To...React/assets/fence.png"
+
 },
 {
     cardType: "park",
-    cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15]
+    cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15],
+    cardImage: "Welcome-To...React/assets/park.png"
+
 },
 {
     cardType: "realEstate",
-    cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15]
+    cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15],
+    cardImage: "Welcome-To...React/assets/realEstate.png"
+
 }];
 
 export const getCardData = () => CardValues;
@@ -40,10 +53,12 @@ export const GenerateDeck = () => {
     var newDeck : CardValue[] = [];
     data.forEach(element => {
         var currentType = element.cardType;
+        var currentImage = element.cardImage;
         element.cardValues.forEach(value => {
             newDeck.push({
                 cardType: currentType,
-                cardValue: value
+                cardValue: value,
+                cardImage: currentImage
             })
         });
     });
@@ -69,9 +84,11 @@ export const ShuffleDeck = (deck:CardValue[], permutations:number) => {
 
 export const getCardValue = (card: CardValue, rowPosition: string) => {
     if(rowPosition == "top") {
-        return card.cardType;
+        return card.cardImage;
+        //+ " (" + card.cardValue + ")";
     } else {
         return card.cardValue;
+        //+ " (" + card.cardType + ")";
     }
 }
 // function ShuffleDeck(deck, permutations) {
