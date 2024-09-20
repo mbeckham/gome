@@ -59,7 +59,7 @@ const Home: React.FC = () => {
           </IonCol>
         </IonRow>
       </IonGrid>
-      <DeckList cardValues={deck}></DeckList>
+      <DeckList cardSets={cardSets}></DeckList>
       </IonContent>
     </IonPage>
   );

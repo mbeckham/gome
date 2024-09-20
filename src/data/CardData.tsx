@@ -7,7 +7,8 @@ export interface CardData {
 export interface CardValue {
     cardType: string,
     cardValue: number,
-    cardImage: string
+    cardImage: string,
+    key: number
 }
 
 const CardValues: CardData[] =[{
@@ -49,6 +50,7 @@ const CardValues: CardData[] =[{
 export const getCardData = () => CardValues;
 
 export const GenerateDeck = () => {
+    var counter = 0;
     var data = getCardData();
     var newDeck : CardValue[] = [];
     data.forEach(element => {
@@ -58,7 +60,8 @@ export const GenerateDeck = () => {
             newDeck.push({
                 cardType: currentType,
                 cardValue: value,
-                cardImage: currentImage
+                cardImage: currentImage,
+                key: counter++
             })
         });
     });

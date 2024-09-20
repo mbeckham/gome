@@ -7,18 +7,6 @@ interface CardProps {
     rowPosition: string
  }
 
-function isNumber(value:string|number) {
-  return typeof value === 'number';
-}
-
-function buildBottom() {
-
-}
-
-function buildTop(card: CardValue) {
-
-}
-
 const Card: React.FC<CardProps> = ({ currentCard, rowPosition}) => {
 
   var element;
