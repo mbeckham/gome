@@ -1,5 +1,7 @@
+import {CardTypes} from "./CardTypes"
+
 export interface CardData {
-    cardType: string,
+    cardType: CardTypes,
     cardValues: number[],
     cardImage: string
 }
@@ -12,36 +14,36 @@ export interface CardValue {
 }
 
 const CardValues: CardData[] =[{
-    cardType : "pool",
+    cardType : CardTypes.pool,
     cardValues : [3, 4, 6, 7, 8, 9, 10, 12, 13],
     cardImage: "Welcome-To...React/assets/pool.png"
 },
 {
-    cardType: "construction",
+    cardType: CardTypes.construction,
     cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13],
     cardImage: "Welcome-To...React/assets/construction.png"
 
 },
 {
-    cardType: "BIS",
+    cardType: CardTypes.BIS,
     cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13],
     cardImage: "Welcome-To...React/assets/bis.png"
 
 },
 {
-    cardType: "fence",
+    cardType: CardTypes.fence,
     cardValues: [1, 2, 3, 5, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 11, 13, 14, 15],
     cardImage: "Welcome-To...React/assets/fence.png"
 
 },
 {
-    cardType: "park",
+    cardType: CardTypes.park,
     cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15],
     cardImage: "Welcome-To...React/assets/park.png"
 
 },
 {
-    cardType: "realEstate",
+    cardType: CardTypes.realEstate,
     cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15],
     cardImage: "Welcome-To...React/assets/realEstate.png"
 

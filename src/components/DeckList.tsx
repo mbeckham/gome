@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardData, CardValue, GenerateDeck, ShuffleDeck } from '../data/CardData';
-import { IonCol, IonContent, IonGrid, IonItem, IonLabel, IonList, IonRow } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonItem, IonLabel, IonList, IonRow, IonImg } from '@ionic/react';
 import { IonAccordion, IonAccordionGroup } from '@ionic/react';
 
 
@@ -12,7 +12,8 @@ function buildColumn(cardSet: CardValue[]) {
     return cardSet.map(card =>
         <IonItem key={card.key}>
             <IonLabel key={card.key + card.cardValue}>{card.cardValue}</IonLabel>
-            <IonLabel key={card.key+card.cardType}>{card.cardType}</IonLabel>
+            <IonImg  key={card.key+card.cardType} src={card.cardImage}></IonImg>
+
         </IonItem>
     );
 

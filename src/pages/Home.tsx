@@ -9,6 +9,7 @@ import './Home.css';
 import Card from '../components/Card';
 import Row from '../components/Row';
 import DeckList from '../components/DeckList'
+import IconKey from '../components/IconKey'
 
 const Home: React.FC = () => {
 
@@ -21,6 +22,7 @@ const Home: React.FC = () => {
   const CardSetThree = deck.slice(54,81);
 
   const cardSets = [cardSetOne, CardSetTwo, CardSetThree]
+
 
   function nextRound() {
       if(deckPosition < 26) {
@@ -46,8 +48,15 @@ const Home: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
         </IonHeader> 
-      <h1 className="roundCounter">Round: {deckPosition}</h1>
       <IonGrid>
+        <IonRow>
+          <IonCol>
+            <h1 className="roundCounter">Round: {deckPosition}</h1>
+          </IonCol>
+          <IonCol>
+            <IconKey></IconKey>
+          </IonCol>
+        </IonRow>
         <Row cardSets={cardSets} rowPosition='top' deckPos={deckPosition}/>
         <Row cardSets={cardSets} rowPosition='bottom' deckPos={deckPosition-1}/>
         <IonRow>
