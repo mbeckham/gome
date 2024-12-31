@@ -45,9 +45,6 @@ const CardValues: CardData[] = [{
     cardType: CardTypes.powerThree,
     cardImage: "gome/assets/three.png"
 
-}, {
-
-
 }];
 
 export const getQuestion = () => {

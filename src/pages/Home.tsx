@@ -8,7 +8,7 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 import Card from '../components/Card';
 import Row from '../components/Row';
-import DeckList from '../components/DeckList'
+//import DeckList from '../components/DeckList'
 import IconKey from '../components/IconKey'
 
 const Home: React.FC = () => {
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
 
 
   function nextRound() {
-      if(deckPosition < 4 + era) {
+      if(era != 0 && deckPosition < 4 + era) {
           var x = deckPosition + 1;
           setDeckPosition(x);
       }
