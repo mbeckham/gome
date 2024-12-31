@@ -1,6 +1,6 @@
 ion-card {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     margin: auto;
   }
 
@@ -13,4 +13,5 @@ ion-card {
     width: 32px;
     height: 32px;
     margin:auto;
+    display: none;
   }

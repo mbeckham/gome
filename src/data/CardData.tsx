@@ -1,98 +1,109 @@
-import {CardTypes} from "./CardTypes"
+import { CardTypes } from "./CardTypes"
 
 export interface CardData {
     cardType: CardTypes,
-    cardValues: number[],
     cardImage: string
 }
 
-export interface CardValue {
-    cardType: string,
-    cardValue: number,
-    cardImage: string,
-    key: number
-}
 
-const CardValues: CardData[] =[{
-    cardType : CardTypes.pool,
-    cardValues : [3, 4, 6, 7, 8, 9, 10, 12, 13],
-    cardImage: "Welcome-To...React/assets/pool.png"
+
+const CardValues: CardData[] = [{
+    cardType: CardTypes.grass,
+    cardImage: "gome/assets/grass.png"
 },
 {
-    cardType: CardTypes.construction,
-    cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13],
-    cardImage: "Welcome-To...React/assets/construction.png"
+    cardType: CardTypes.sand,
+    cardImage: "gome/assets/sand.png"
 
 },
 {
-    cardType: CardTypes.BIS,
-    cardValues: [3, 4, 6, 7, 8, 9, 10, 12, 13],
-    cardImage: "Welcome-To...React/assets/bis.png"
+    cardType: CardTypes.mountain,
+    cardImage: "gome/assets/mountain.png"
 
 },
 {
-    cardType: CardTypes.fence,
-    cardValues: [1, 2, 3, 5, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 11, 13, 14, 15],
-    cardImage: "Welcome-To...React/assets/fence.png"
+    cardType: CardTypes.water,
+    cardImage: "gome/assets/water.png"
 
 },
 {
-    cardType: CardTypes.park,
-    cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15],
-    cardImage: "Welcome-To...React/assets/park.png"
+    cardType: CardTypes.twoadj,
+    cardImage: "gome/assets/twoadj.png"
 
 },
 {
-    cardType: CardTypes.realEstate,
-    cardValues: [1, 2, 4, 5, 5, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12, 14, 15],
-    cardImage: "Welcome-To...React/assets/realEstate.png"
+    cardType: CardTypes.powerOne,
+    cardImage: "gome/assets/one.png"
+
+},
+{
+    cardType: CardTypes.powerTwo,
+    cardImage: "gome/assets/two.png"
+
+},
+{
+    cardType: CardTypes.powerThree,
+    cardImage: "gome/assets/three.png"
+
+}, {
+
 
 }];
+
+export const getQuestion = () => {
+    var question: CardData = {
+        cardType: CardTypes.question,
+        cardImage: "gome/assets/question.png"
+    };
+
+    return [question];
+
+}
 
 export const getCardData = () => CardValues;
 
 export const GenerateDeck = () => {
     var counter = 0;
-    var data = getCardData();
-    var newDeck : CardValue[] = [];
-    data.forEach(element => {
-        var currentType = element.cardType;
-        var currentImage = element.cardImage;
-        element.cardValues.forEach(value => {
-            newDeck.push({
-                cardType: currentType,
-                cardValue: value,
-                cardImage: currentImage,
-                key: counter++
-            })
-        });
-    });
-    newDeck = ShuffleDeck(newDeck, 3);
+    //var data = getCardData();
+    var newDeck = getCardData();
+    // data.forEach(element => {
+    //     var currentType = element.cardType;
+    //     var currentImage = element.cardImage;
+    //     element.cardValues.forEach(value => {
+    //         newDeck.push({
+    //             cardType: currentType,
+    //             cardValue: value,
+    //             cardImage: currentImage,
+    //             key: counter++
+    //         })
+    //     });
+    // });
+    //newDeck = ShuffleDeck(newDeck, 3);
     return newDeck;
-    
+
 }
-export const ShuffleDeck = (deck:CardValue[], permutations:number) => {
-    var limit = deck.length -1;
-    for(var y = 0; y < permutations; y++) {
-        for(var i = deck.length -1; i > 0; i--) {
+export const ShuffleDeck = (deck: CardData[], permutations: number, round: number) => {
+    var limit = deck.length - 1;
+    for (var y = 0; y < permutations; y++) {
+        for (var i = 4 + round; i > 0; i--) {
             var shuffle = getRandomIntInclusive(0, i);
-            if(shuffle != i) {
+            if (shuffle != i) {
                 var x = deck[shuffle];
                 deck[shuffle] = deck[i];
                 deck[i] = x;
             }
         }
     }
-    
+
     return deck;
 }
 
-export const getCardValue = (card: CardValue, rowPosition: string) => {
-    if(rowPosition == "top") {
+export const getCardValue = (card: CardData, rowPosition: string) => {
+    if (rowPosition == "top") {
         return card.cardImage;
         //+ " (" + card.cardValue + ")";
     } else {
-        return card.cardValue;
+        return card.cardType;
         //+ " (" + card.cardType + ")";
     }
 }
@@ -108,14 +119,14 @@ export const getCardValue = (card: CardValue, rowPosition: string) => {
 //             }
 //         }
 //     }
-    
+
 //     return deck;
 // }
 
-function getRandomIntInclusive(min:number, max: number) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+function getRandomIntInclusive(min: number, max: number) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
 }
 
 

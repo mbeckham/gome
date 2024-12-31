@@ -2,7 +2,7 @@ import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from 
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import { useState } from "react"
-import {CardData, CardValue, GenerateDeck, ShuffleDeck} from '../data/CardData';
+import {CardData, GenerateDeck, getCardData, getQuestion, ShuffleDeck} from '../data/CardData';
 
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
@@ -15,34 +15,37 @@ const Home: React.FC = () => {
 
   var populatedDeck = GenerateDeck();
 
-  const [deckPosition, setDeckPosition] = useState(1);
-  const [deck, setDeck] = useState<CardValue[]>(populatedDeck);
-  const cardSetOne = deck.slice(0, 27);
-  const CardSetTwo = deck.slice(27,54);
-  const CardSetThree = deck.slice(54,81);
+  const [era, setEra] = useState(0);
+  var shuffledDeck = getQuestion();
 
-  const cardSets = [cardSetOne, CardSetTwo, CardSetThree]
+
+  const [deckPosition, setDeckPosition] = useState(0);
+  const [deck, setDeck] = useState<CardData[]>(shuffledDeck);
+
 
 
   function nextRound() {
-      if(deckPosition < 26) {
+      if(deckPosition < 4 + era) {
           var x = deckPosition + 1;
           setDeckPosition(x);
       }
   }
 
-  function previousRound() {
-    if(deckPosition >1) {
-      var x = deckPosition -1;
-      setDeckPosition(x);
+  function nextEra() {
+    if(era < 4) {
+      setDeckPosition(0);
+      var x = era + 1;
+      setEra(x);
+      setDeck(ShuffleDeck(populatedDeck, 5, x));
     }
+    
   }
   
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Welcome To...</IonTitle>
+          <IonTitle>guild of merchant explorers</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -51,24 +54,20 @@ const Home: React.FC = () => {
       <IonGrid>
         <IonRow>
           <IonCol>
-            <h1 className="roundCounter">Round: {deckPosition}</h1>
-          </IonCol>
-          <IonCol>
-            <IconKey></IconKey>
+            <h1 className="roundCounter">Era: {era}</h1>
           </IonCol>
         </IonRow>
-        <Row cardSets={cardSets} rowPosition='top' deckPos={deckPosition}/>
-        <Row cardSets={cardSets} rowPosition='bottom' deckPos={deckPosition-1}/>
+        <Row cardSets={deck} deckPos={deckPosition}/>
         <IonRow>
           <IonCol>
-          <IonButton expand='block' onClick={previousRound}>Previous Round</IonButton>
+          <IonButton expand='block' onClick={nextEra}>Next Era</IonButton>
           </IonCol>
           <IonCol>
-          <IonButton expand='block' onClick={nextRound}>Next Round</IonButton>
+          <IonButton expand='block' onClick={nextRound}>Next Card</IonButton>
           </IonCol>
         </IonRow>
       </IonGrid>
-      <DeckList cardSets={cardSets}></DeckList>
+      {/* <DeckList cardSets={cardSets}></DeckList> */}
       </IonContent>
     </IonPage>
   );
